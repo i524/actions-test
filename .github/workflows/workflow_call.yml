@@ -5,11 +5,4 @@ on:
 
 jobs:
   call-main-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call Main Workflow
-        uses: ./workflow.yml
-        with:
-          workflow: "Main Workflow"
-          workflow_ref: "main"
-          job: "job1"
+    uses: i524/actions-test/.github/workflows/workflow.yml@main
