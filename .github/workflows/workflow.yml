@@ -20,10 +20,10 @@ jobs:
 
   job2:
     needs: job1
-    if: needs.job1.outputs.node-version == '16'
+    # if: needs.job1.outputs.node-version == '16'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Job2
-        run: echo "Job2"
+        run: echo "Job2" ${{ needs.job1.outputs.node-version }}
