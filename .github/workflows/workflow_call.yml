@@ -1,0 +1,15 @@
+name: Workflow Call Example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-main-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Main Workflow
+        uses: ./workflow.yml
+        with:
+          workflow: "Main Workflow"
+          workflow_ref: "main"
+          job: "job1"

@@ -1,0 +1,29 @@
+name: Main Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Job1
+        run: echo "Job1"
+        id: job1
+    outputs:
+      node-version: ${{ matrix.node-version }}
+
+  job2:
+    needs: job1
+    if: needs.job1.outputs.node-version == '16'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Job2
+        run: echo "Job2"
